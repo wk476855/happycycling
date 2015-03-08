@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/home_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text=""
+            android:background="#00000000"
+            android:id="@+id/back" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/start"
+            android:background="@drawable/home_start" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/map"
+            android:layout_toRightOf="@+id/start"
+            android:layout_alignTop="@+id/start"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/home_map" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cycling"
+            android:layout_below="@+id/start"
+            android:layout_alignLeft="@+id/start"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/home_cycling"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/person"
+            android:layout_below="@+id/map"
+            android:layout_alignTop="@+id/cycling"
+            android:layout_alignLeft="@+id/map"
+            android:background="@drawable/home_person"/>
+    </RelativeLayout>
+</RelativeLayout>

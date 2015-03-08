@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/map_team_mask">
+    <ImageButton
+        android:id="@+id/createTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/map_team_create"/>
+    <ImageButton
+        android:id="@+id/joinTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/map_team_join"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/createTeam"
+        android:layout_marginTop="10dp"/>
+    <ImageButton
+        android:id="@+id/dipTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/map_team_display"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/joinTeam"
+        android:layout_marginTop="20dp"/>
+</RelativeLayout>

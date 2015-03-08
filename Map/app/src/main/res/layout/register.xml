@@ -1,0 +1,173 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/register_backgroud"
+    tools:context="tang.map.start.register">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text=""
+            android:background="#00000000"
+            android:id="@+id/back" />
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:text=""
+            android:background="#00000000"
+            android:id="@+id/finish" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_photo"
+            android:layout_toLeftOf="@+id/head_frame"
+            android:id="@+id/album"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_camera"
+            android:layout_toRightOf="@+id/head_frame"
+            android:id="@+id/camera"/>
+        <RadioButton
+            android:id="@+id/girl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_girl_selector"
+            android:button="@null"
+            android:layout_alignBottom="@+id/head_frame"
+            android:layout_toRightOf="@+id/head_frame"/>
+        <RadioButton
+            android:id="@+id/boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_boy_selector"
+            android:button="@null"
+            android:layout_toLeftOf="@+id/head_frame"
+            android:layout_alignBottom="@+id/head_frame"/>
+        <FrameLayout
+            android:id="@+id/head_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/register_head"
+                android:id="@+id/head" />
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/register_head_mask"
+                android:id="@+id/head_mask" />
+            </FrameLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/up"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/register_mask">
+
+        <RelativeLayout
+            android:id="@+id/first"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/register_label_account"
+                android:id="@+id/accout_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/accout_label"
+                android:layout_alignBottom="@+id/accout_label"
+                android:background="@drawable/register_input_account"
+                android:id="@+id/account" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/second"
+            android:layout_below="@+id/first"
+            android:layout_alignLeft="@+id/first"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_label_nickname"
+                android:id="@+id/name_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_input_nickname"
+                android:layout_toRightOf="@+id/name_label"
+                android:layout_alignBottom="@+id/name_label"
+                android:id="@+id/name" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/third"
+            android:layout_below="@+id/second"
+            android:layout_alignLeft="@+id/second"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_label_passwd"
+                android:id="@+id/passwd_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@drawable/register_input_passwd"
+                android:layout_toRightOf="@+id/passwd_label"
+                android:layout_alignBottom="@+id/passwd_label"
+                android:id="@+id/passwd" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@+id/third"
+            android:layout_alignLeft="@+id/third"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_label_repasswd"
+                android:id="@+id/repasswd_label"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@drawable/register_input_repasswd"
+                android:layout_toRightOf="@+id/repasswd_label"
+                android:layout_alignBottom="@+id/repasswd_label"
+                android:id="@+id/repasswd" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

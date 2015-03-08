@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tang.map"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 挂载和反挂载的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 读取手机状态 ,如来了新电话 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 网络访问权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- 百度地图定位功能所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="骑乐融融"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="RhczvWEWhM8F6eeG4q4SqeFL" />
+
+        <activity
+            android:name="tang.map.start.start"
+            android:label="骑乐融融" >
+        </activity>
+
+        <!-- 百度定位服务    android:permission="android.permission.BAIDU_LOCATION_SERVICE"> -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <activity
+            android:name="tang.map.start.register"
+            android:label="@string/register" >
+        </activity>
+        <activity
+            android:name="tang.map.start.login"
+            android:label="@string/login" >
+        </activity>
+        <activity
+            android:name="tang.map.start.welcome"
+            android:label="骑乐融融" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="tang.map.cycle.home"
+            android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.map"
+            android:label="@string/title_activity_map"
+            android:windowSoftInputMode="adjustUnspecified" >
+        </activity>
+
+        <service
+            android:name="tang.map.service.SocketService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+        <service
+            android:name="tang.map.service.HeartService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name="tang.map.cycle.chat"
+            android:label="@string/title_activity_chat"
+            android:windowSoftInputMode="adjustPan|stateVisible" >
+        </activity>
+        <activity
+            android:name="tang.map.team.createTeam"
+            android:label="@string/title_activity_create_team" >
+        </activity>
+        <activity
+            android:name="tang.map.team.joinTeam"
+            android:label="@string/title_activity_join_team" >
+        </activity>
+
+        <service
+            android:name="tang.map.service.CommunicationService"
+            android:enabled="true"
+            android:exported="true" >
+            <meta-data
+                android:name="state"
+                android:value="test" />
+            <meta-data
+                android:name="testServer"
+                android:value="58.196.157.132" />
+            <meta-data
+                android:name="testPort"
+                android:value="12345" />
+            <meta-data
+                android:name="releaseServer"
+                android:value="whatthefuck.nat123.net" />
+            <meta-data
+                android:name="releasePort"
+                android:value="35772" />
+        </service>
+
+        <activity
+            android:name="tang.map.team.applytoteam"
+            android:label="@string/title_activity_notification" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.cycle"
+            android:label="@string/title_activity_cycle" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.sendphoto"
+            android:label="@string/title_activity_sendphoto" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.showphoto"
+            android:label="@string/title_activity_showphoto" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.person"
+            android:label="@string/title_activity_person" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.select"
+            android:label="@string/title_activity_select" >
+        </activity>
+        <activity
+            android:name="tang.map.cycle.setout"
+            android:label="@string/title_activity_setout" >
+        </activity>
+    </application>
+
+</manifest>

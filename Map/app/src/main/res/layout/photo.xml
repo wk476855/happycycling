@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/map_head_mask"
+    android:layout_width="200dp"
+    android:layout_height="140dp">
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/other"
+        android:layout_width="160dp"
+        android:layout_height="80dp" />
+</RelativeLayout>

@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/setout_startup"
+    tools:context=".MyActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/back"
+            android:background="#00000000"/>
+        <Button
+            android:id="@+id/close"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:background="#00000000"/>
+    </RelativeLayout>
+
+
+    <AbsoluteLayout
+        android:id="@+id/showData"
+        android:background="@drawable/setout_showdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/dis_show"
+            android:text="0.00m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="60dp"
+            android:layout_y="60dp" />
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/time_show"
+            android:text="00:00:00s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="222dp"
+            android:layout_y="60dp" />
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/averspeed_show"
+            android:text="0.00m/s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="60dp"
+            android:layout_y="141dp" />
+
+        <TextView
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/speed_show"
+            android:text="0.00m/s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="227dp"
+            android:layout_y="142dp" />
+
+    </AbsoluteLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/botton"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/showData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/focus"
+            android:background="@drawable/setout_focus"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="45dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>

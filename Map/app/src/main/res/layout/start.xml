@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/start_backgroud"
+        tools:context="tang.map.start.start">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/log"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/login"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/start_log" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:background="@drawable/start_login"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/login"
+        android:layout_alignLeft="@+id/login"
+        android:background="@drawable/start_register"/>
+
+</RelativeLayout>

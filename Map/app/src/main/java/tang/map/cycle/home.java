@@ -79,7 +79,7 @@ public class home extends Activity
         userLoc.registerLocationListener(new MyLocationLister());
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true);
-        option.setCoorType("bd0911");
+        option.setCoorType("bd09ll");
         userLoc.setLocOption(option);
         userLoc.start();
 
@@ -150,14 +150,16 @@ public class home extends Activity
     {
         @Override
         public void onReceiveLocation(BDLocation location) {
-            if(user.getNickname().equals("x1"))
-                location = new BDLocation(121,31,0);
+//            if(user.getNickname().equals("x1"))
+//                location = new BDLocation(121,31,0);
             LatLng loc = new LatLng(location.getLatitude(),location.getLongitude());
             translate.reverseGeoCode(new ReverseGeoCodeOption().location(loc));
             user.setLongitude(loc.longitude);
             user.setLatitude(loc.latitude);
-            editor.putFloat("longitude", (float)loc.longitude);
-            editor.putFloat("latitude", (float)loc.latitude);
+            /*editor.putFloat("longitude", (float)loc.longitude);
+            editor.putFloat("latitude", (float)loc.latitude);*/
+            editor.putString("longitude", new Double(loc.longitude).toString());
+            editor.putString("latitude", new Double(loc.latitude).toString());
             editor.commit();
             Bundle updataLoc = new Bundle();
             updataLoc.putSerializable("user",user);
@@ -165,10 +167,7 @@ public class home extends Activity
             updateLocThread.start();
         }
 
-        @Override
-        public void onReceivePoi(BDLocation location) {
 
-        }
     }
     private class MyClickListener implements View.OnClickListener
     {

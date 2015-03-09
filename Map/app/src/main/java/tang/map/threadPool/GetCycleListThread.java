@@ -18,12 +18,12 @@ public class GetCycleListThread extends RootThread
     @Override
     public void run()
     {
-        float longitude = 0f, latitude = 0f;
+        double longitude = 0f, latitude = 0f;
         if(bundle.containsKey("longitude")){
-            longitude = bundle.getFloat("longitude");
+            longitude = bundle.getDouble("longitude");
         }
         if(bundle.containsKey("latitude")){
-            latitude = bundle.getFloat("latitude");
+            latitude = bundle.getDouble("latitude");
         }
         ShareModule sm = new ShareModule();
         String result = sm.getShare(longitude, latitude, 0, 1000);

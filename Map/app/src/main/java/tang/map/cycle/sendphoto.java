@@ -204,8 +204,8 @@ public class sendphoto extends Activity implements ISendPhoto{
                         photo.setDrawingCacheEnabled(false);
                         SharedPreferences sp = getSharedPreferences("user", Context.MODE_PRIVATE);
                         Bundle data = new Bundle();
-                        data.putDouble("longitude",Double.valueOf(sp.getFloat("longitude",0f)));
-                        data.putDouble("latitude",Double.valueOf(sp.getFloat("latitude",0f)));
+                        data.putDouble("longitude",Double.parseDouble(sp.getString("longitude","0")));
+                        data.putDouble("latitude",Double.parseDouble(sp.getString("latitude","0")));
                         data.putString("description", description.getText().toString());
                         data.putString("photo", DataToolkit.BitmapToString(bitmap));
                         data.putString("location",sp.getString("location",""));

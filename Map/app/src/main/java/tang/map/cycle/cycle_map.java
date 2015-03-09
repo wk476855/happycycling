@@ -140,10 +140,7 @@ public class cycle_map extends Fragment {
             baiduMap.setMyLocationData(locData);
         }
 
-        @Override
-        public void onReceivePoi(BDLocation location) {
 
-        }
     }
 
     @Override

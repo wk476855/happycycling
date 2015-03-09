@@ -26,7 +26,7 @@ public class ShareModule extends RootModule{
         return getPackContent(Protocol.SHARE_REC_CMD);
     }
 
-    public String getShare(float longitude, float latitude, int index, int distance){
+    public String getShare(double longitude, double latitude, int index, int distance){
         try{
             json.put("longitude", longitude);
             json.put("latitude", latitude);

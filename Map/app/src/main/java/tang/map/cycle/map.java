@@ -35,6 +35,7 @@ import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
+import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
@@ -67,7 +68,6 @@ import tang.map.threadPool.GetTeamMsgThread;
 import tang.map.threadPool.GetUsersThread;
 import tang.map.threadPool.MyHandler;
 import tang.map.threadPool.SendMsgThread;
-import tang.map.threadPool.UpdateLocThread;
 import tang.map.voiceHelper.VoiceRecord;
 
 public class map extends Activity implements IMap
@@ -175,7 +175,12 @@ public class map extends Activity implements IMap
     private void setMap()
     {
         mapView = (MapView)findViewById(R.id.bmapView);
+
         baiduMap = mapView.getMap();
+        float maxZoomLevel = baiduMap.getMaxZoomLevel();
+        MapStatusUpdate u = MapStatusUpdateFactory.zoomTo(maxZoomLevel);
+        baiduMap.animateMapStatus(u);
+
         baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         baiduMap.setMyLocationEnabled(true);
         MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
@@ -187,6 +192,7 @@ public class map extends Activity implements IMap
         locationClient.registerLocationListener(myLocationListener);
 
         LocationClientOption locationClientOption = new LocationClientOption();
+        locationClientOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         locationClientOption.setOpenGps(true);
         locationClientOption.setCoorType("bd09ll");
         locationClient.setLocOption(locationClientOption);
@@ -613,7 +619,7 @@ public class map extends Activity implements IMap
         popupText.setPadding(20,20,20,30);
         popupText.setTextColor(0xff000000);
         popupText.setText(nodeTitle);
-        baiduMap.showInfoWindow(new InfoWindow(popupText,nodeloc,null));
+        baiduMap.showInfoWindow(new InfoWindow(popupText,nodeloc,0));
     }
 
     /**
@@ -776,10 +782,11 @@ public class map extends Activity implements IMap
         @Override
         public void onReceiveLocation(BDLocation location)
         {
-            if(user.getNickname().equals("x1"))
-                location = new BDLocation(121,31,0);
+//            if(user.getNickname().equals("x1"))
+//                location = new BDLocation(121,31,0);
             if(location == null || mapView == null)
                 return;
+            System.err.println(location.getLongitude() + " " + location.getLatitude());
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
                     .direction(0).latitude(location.getLatitude())
@@ -789,19 +796,14 @@ public class map extends Activity implements IMap
             user.setLatitude(location.getLatitude());
             SharedPreferences sp = getSharedPreferences("user",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
-            editor.putFloat("longitude", (float)location.getLongitude());
-            editor.putFloat("latitude", (float)location.getLatitude());
+            editor.putString("longitude", new Double(location.getLongitude()).toString());
+            editor.putString("latitude", new Double(location.getLatitude()).toString());
             editor.commit();
 //
 //            Bundle updataLoc = new Bundle();
 //            updataLoc.putSerializable("user",user);
 //            UpdateLocThread updateLocThread = new UpdateLocThread(updataLoc);
 //            updateLocThread.start();
-        }
-        @Override
-        public void onReceivePoi(BDLocation location)
-        {
-
         }
     }
 

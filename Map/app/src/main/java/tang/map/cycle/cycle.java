@@ -1,39 +1,17 @@
 package tang.map.cycle;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.InfoWindow;
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MyLocationConfiguration;
-import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +23,7 @@ import tang.map.threadPool.GetCycleListThread;
 import tang.map.threadPool.MyHandler;
 import tang.map.threadPool.UpdateLocThread;
 
-public class cycle extends FragmentActivity{
+public class cycle extends FragmentActivity {
 
     private ArrayList<HashMap<String, Object>> photolist = new ArrayList<HashMap<String, Object>>();
     private Button switchMap = null;
@@ -93,8 +71,8 @@ public class cycle extends FragmentActivity{
     private void getList()
     {
         Bundle bundle = new Bundle();
-        bundle.putFloat("longitude",sp.getFloat("longitude",0f) );
-        bundle.putFloat("latitude", sp.getFloat("latitude",0f));
+        bundle.putDouble("longitude",Double.parseDouble(sp.getString("longitude","0")));
+        bundle.putDouble("latitude",Double.parseDouble(sp.getString("latitude","0")));
 
         MyHandler myHandler = new MyHandler(cycle.this);
         getlist = new GetCycleListThread(myHandler,bundle);

@@ -123,6 +123,7 @@ public class MyHandler extends Handler
             if(result == null)
             {
                 mmap.show("网络连接失败");
+
             }
             else
             {
@@ -256,7 +257,7 @@ public class MyHandler extends Handler
                     if(userid == sp.getInt("userid", 0))
                         flag = false;
                 }
-                if (false)
+                if (flag)
                 {
                     mmap.setUsersUI(0,userid);
                     String voicepath = DataToolkit.stringToVoice(content);

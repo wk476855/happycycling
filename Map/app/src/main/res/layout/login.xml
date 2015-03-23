@@ -48,8 +48,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_input_account"
                 android:layout_toRightOf="@+id/accout_label2"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/account"
-                android:text="x1" />
+                android:text="wk" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -71,6 +73,8 @@
                 android:inputType="textPassword"
                 android:background="@drawable/login_input_passwd"
                 android:layout_toRightOf="@+id/passwd_label2"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/passwd"
                 android:text="123" />
 

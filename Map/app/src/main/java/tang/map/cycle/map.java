@@ -6,9 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.Point;
 import android.graphics.drawable.PaintDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -56,6 +60,7 @@ import com.baidu.mapapi.search.route.RoutePlanSearch;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -67,6 +72,7 @@ import tang.map.team.joinTeam;
 import tang.map.threadPool.GetTeamMsgThread;
 import tang.map.threadPool.GetUsersThread;
 import tang.map.threadPool.MyHandler;
+import tang.map.threadPool.SOSThread;
 import tang.map.threadPool.SendMsgThread;
 import tang.map.voiceHelper.VoiceRecord;
 
@@ -112,6 +118,8 @@ public class map extends Activity implements IMap
     private SharedPreferences activitysp = null;
     private TeamMessageReceiver tmReseiver = null;
 
+
+    private AssetManager am = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +139,8 @@ public class map extends Activity implements IMap
         SharedPreferences.Editor editor = everysp.edit();
         editor.putString("currentActivity", "");
         editor.commit();
+
+        am = getAssets();
 
 //        activitysp = getSharedPreferences("activityinfo", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = activitysp.edit();
@@ -566,7 +576,8 @@ public class map extends Activity implements IMap
                     startActivity(intent);
                     break;
                 case R.id.sos:
-
+                    new SOSThread(new MyHandler(map.this), null).start();
+                    Toast.makeText(map.this, "SOS发送成功！", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

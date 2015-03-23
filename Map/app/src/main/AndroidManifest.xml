@@ -59,7 +59,7 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
+            android:process=":remote">
         </service>
 
         <activity
@@ -120,7 +120,7 @@
             android:exported="true" >
             <meta-data
                 android:name="state"
-                android:value="test" />
+                android:value="release" />
             <meta-data
                 android:name="testServer"
                 android:value="58.196.157.132" />
@@ -129,10 +129,10 @@
                 android:value="12345" />
             <meta-data
                 android:name="releaseServer"
-                android:value="whatthefuck.nat123.net" />
+                android:value="202.120.38.22" />
             <meta-data
                 android:name="releasePort"
-                android:value="35772" />
+                android:value="12345" />
         </service>
 
         <activity

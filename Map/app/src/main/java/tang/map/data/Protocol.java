@@ -62,7 +62,10 @@ public class Protocol {
     public static final Integer QUITR_SEND_CMD = new Integer( 219);
 
 
-    public static final Integer HELP_SEND_CMD = new Integer( 222);
+    public static final Integer LOST_REC_CMD = new Integer(200);
+
+    public static final Integer HELP_SEND_CMD = new Integer(221);
+    public static final Integer HELP_REC_CMD = new Integer( 222);
 
     public static final Integer SHARE_SEND_CMD = new Integer(300);
     public static final Integer SHARE_REC_CMD = new Integer(301);
@@ -148,8 +151,12 @@ public class Protocol {
                 return QUITR_REC_CMD;
             case 219:
                 return QUITR_SEND_CMD;
-            case 222:
+            case 220:
+                return LOST_REC_CMD;
+            case 221:
                 return HELP_SEND_CMD;
+            case 222:
+                return HELP_REC_CMD;
             case 300:
                 return SHARE_SEND_CMD;
             case 301:

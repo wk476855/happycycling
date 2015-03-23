@@ -4,7 +4,6 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.app.TaskStackBuilder;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +17,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -121,8 +119,6 @@ public class CommunicationService extends Service {
 
         //创建接受数据包的线程
         new ReceiveThread().start();
-
-        am = getAssets();
 
 //        new HeartThread().start();
 
@@ -306,17 +302,24 @@ public class CommunicationService extends Service {
             }
 
             if(msg.what == 0x105) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            am = getAssets();
+                            AssetFileDescriptor afd = am.openFd("sos.mp3");
+                            MediaPlayer mp = new MediaPlayer();
+                            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                            afd.close();
+                            mp.prepare();
+                            mp.start();
 
-                try {
-                    AssetFileDescriptor afd = am.openFd("sos.mp3");
-                    MediaPlayer mp = new MediaPlayer();
-                    mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                    mp.prepare();
-                    mp.start();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
 
             if(msg.what == 0x106) {
@@ -348,7 +351,7 @@ public class CommunicationService extends Service {
 
         public void notifyActivity(int notificationId, Intent intent, String content){
             PendingIntent pendingIntent = PendingIntent.getActivity(CommunicationService.this, 0, intent, 0);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(CommunicationService.this)
+            Notification.Builder builder = new Notification.Builder(CommunicationService.this)
                     .setSmallIcon(R.drawable.icon)
                     .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
                     .setContentText(content)

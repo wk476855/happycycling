@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ServiceInfo;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Handler;
@@ -56,6 +59,8 @@ public class CommunicationService extends Service {
     private SharedPreferences sp1 = null;
     private ApplicationTable at = null;
     private CommunicationTable ct = null;
+    private AssetManager am = null;
+
 
     public CommunicationService() {
     }
@@ -116,6 +121,8 @@ public class CommunicationService extends Service {
 
         //创建接受数据包的线程
         new ReceiveThread().start();
+
+        am = getAssets();
 
 //        new HeartThread().start();
 
@@ -298,6 +305,31 @@ public class CommunicationService extends Service {
                 }
             }
 
+            if(msg.what == 0x105) {
+
+                try {
+                    AssetFileDescriptor afd = am.openFd("sos.mp3");
+                    MediaPlayer mp = new MediaPlayer();
+                    mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    mp.prepare();
+                    mp.start();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if(msg.what == 0x106) {
+                String result = msg.getData().getString("result");
+                try {
+                    JSONObject json = new JSONObject(result);
+                    if(json.has("nickname"))
+                        Toast.makeText(CommunicationService.this, String.valueOf(json.getString("nickname")), Toast.LENGTH_SHORT).show();
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
             if(msg.what == 0x111){
                 Intent intent = new Intent(CommunicationService.this, home.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -436,6 +468,16 @@ public class CommunicationService extends Service {
                                 String result = pair.get(cmd);
                                 sendBack(result, Protocol.QUITR_REC_CMD, Protocol.QUITR_SEND_CMD);
                                 sendMsg(result, 0x104);
+                            }
+                            if(cmd == Protocol.HELP_REC_CMD) {
+                                String result = pair.get(cmd);
+                                receivePool.remove(cmd);
+                                sendMsg(result, 0x105);
+                            }
+                            if(cmd == Protocol.LOST_REC_CMD) {
+                                String result = pair.get(cmd);
+                                receivePool.remove(cmd);
+                                sendMsg(result, 0x10);
                             }
                         }
                     }

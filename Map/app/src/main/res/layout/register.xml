@@ -103,6 +103,8 @@
                 android:layout_toRightOf="@+id/accout_label"
                 android:layout_alignBottom="@+id/accout_label"
                 android:background="@drawable/register_input_account"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/account" />
         </RelativeLayout>
         <RelativeLayout
@@ -123,6 +125,8 @@
                 android:background="@drawable/register_input_nickname"
                 android:layout_toRightOf="@+id/name_label"
                 android:layout_alignBottom="@+id/name_label"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/name" />
         </RelativeLayout>
         <RelativeLayout
@@ -144,6 +148,8 @@
                 android:background="@drawable/register_input_passwd"
                 android:layout_toRightOf="@+id/passwd_label"
                 android:layout_alignBottom="@+id/passwd_label"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/passwd" />
         </RelativeLayout>
         <RelativeLayout
@@ -164,6 +170,8 @@
                 android:background="@drawable/register_input_repasswd"
                 android:layout_toRightOf="@+id/repasswd_label"
                 android:layout_alignBottom="@+id/repasswd_label"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:id="@+id/repasswd" />
         </RelativeLayout>
 

@@ -62,7 +62,7 @@ public class Protocol {
     public static final Integer QUITR_SEND_CMD = new Integer( 219);
 
 
-    public static final Integer LOST_REC_CMD = new Integer(200);
+    public static final Integer LOST_REC_CMD = new Integer(220);
 
     public static final Integer HELP_SEND_CMD = new Integer(221);
     public static final Integer HELP_REC_CMD = new Integer( 222);

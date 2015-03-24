@@ -47,9 +47,6 @@ public class ClientSocket {
         bos = new BufferedOutputStream(socket.getOutputStream());
     }
 
-    public void sendHeart() throws IOException {
-        socket.sendUrgentData(0xff);
-    }
 
     private void sendPackage(byte[] data) throws IOException {
         bos.write(data);
@@ -118,13 +115,13 @@ public class ClientSocket {
             if(len <=  0)
                 break;
 //            System.err.println(Arrays.toString(header));
-            Log.v("header", Arrays.toString(header));
+//            Log.v("header", Arrays.toString(header));
             System.arraycopy(header, cnt, headerCopy, cnt, len);
             cnt += len;
             if(cnt == 4) {
                 contentLen = DataToolkit.byteArrayToInt(headerCopy, 4);
 //                System.err.println("contentLen   " + contentLen);
-                Log.v("packByteLen", ""+contentLen);
+//                Log.v("packByteLen", ""+contentLen);
                 break;
             }
         }

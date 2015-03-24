@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import tang.map.R;
 import tang.map.cycle.home;
@@ -120,7 +121,8 @@ public class CommunicationService extends Service {
         //创建接受数据包的线程
         new ReceiveThread().start();
 
-//        new HeartThread().start();
+        //心跳120s
+
 
     }
 
@@ -326,8 +328,11 @@ public class CommunicationService extends Service {
                 String result = msg.getData().getString("result");
                 try {
                     JSONObject json = new JSONObject(result);
+                    String content = "";
                     if(json.has("nickname"))
-                        Toast.makeText(CommunicationService.this, String.valueOf(json.getString("nickname")), Toast.LENGTH_SHORT).show();
+                     content = json.getString("nickname") + "退队了";
+                    MyNotification mn = new MyNotification();
+                    mn.notifyActivity(103, null, content);
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -350,14 +355,17 @@ public class CommunicationService extends Service {
     private class MyNotification{
 
         public void notifyActivity(int notificationId, Intent intent, String content){
-            PendingIntent pendingIntent = PendingIntent.getActivity(CommunicationService.this, 0, intent, 0);
+
             Notification.Builder builder = new Notification.Builder(CommunicationService.this)
                     .setSmallIcon(R.drawable.icon)
                     .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE)
                     .setContentText(content)
                     .setContentTitle("骑乐融融")
-                    .setAutoCancel(true)
-                    .setContentIntent(pendingIntent);
+                    .setAutoCancel(true);
+            if(intent != null) {
+                PendingIntent pendingIntent = PendingIntent.getActivity(CommunicationService.this, 0, intent, 0);
+                builder.setContentIntent(pendingIntent);
+            }
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(notificationId, builder.build());
@@ -480,7 +488,7 @@ public class CommunicationService extends Service {
                             if(cmd == Protocol.LOST_REC_CMD) {
                                 String result = pair.get(cmd);
                                 receivePool.remove(cmd);
-                                sendMsg(result, 0x10);
+                                sendMsg(result, 0x106);
                             }
                         }
                     }
@@ -512,26 +520,7 @@ public class CommunicationService extends Service {
         }
     }
 
-    private class HeartThread extends Thread{
-        @Override
-        public void run() {
-//            while (true){
-//                if(clientSocket != null) {
-//                    try {
-//                        clientSocket.sendHeart();
-//                        try {
-//                            sleep(5000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                        myHandler.sendEmptyMessage(0x111);
-//                    }
-//                }
-//            }
-        }
-    }
+
 //
     private void checkLogin(){
         new Thread(){

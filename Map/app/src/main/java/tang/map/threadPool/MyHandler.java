@@ -96,6 +96,7 @@ public class MyHandler extends Handler
                             case 0:
                                 log.show("登陆成功");
                                 log.writeData(json);
+                                new HeartThread(activity).start();
                                 log.jump();
                                 break;
                             case 1:

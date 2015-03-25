@@ -86,10 +86,10 @@
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="android_api_1.1_forsdk" level="project" />
     <orderEntry type="library" exported="" name="org.json-20120521" level="project" />
     <orderEntry type="library" exported="" name="galaxy_mini" level="project" />
     <orderEntry type="library" exported="" name="BaiduLBS_Android" level="project" />
-    <orderEntry type="library" exported="" name="android_api_1.1_forsdk" level="project" />
   </component>
 </module>
 

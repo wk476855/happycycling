@@ -13,7 +13,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text=""
-            android:background="#00000000"
+            android:background="@drawable/backgrayicon"
             android:id="@+id/back" />
     </LinearLayout>
     <RelativeLayout

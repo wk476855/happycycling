@@ -12,7 +12,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/back"
-            android:background="@android:color/transparent"/>
+            android:background="@drawable/backicon"/>
         <Button
             android:id="@+id/switchToMap"
             android:layout_width="57dp"
@@ -55,14 +55,19 @@
             android:id="@+id/cycle_fragment"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-            </RelativeLayout>
-        <Button
-            android:id="@+id/add"
-            android:background="@drawable/cycle_add"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/add"
+                android:background="@drawable/cycle_add"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="43dp"
+                android:layout_marginBottom="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

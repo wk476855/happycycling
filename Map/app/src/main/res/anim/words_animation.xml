@@ -2,10 +2,28 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <alpha
-    android:fromAlpha="0.0"
-    android:toAlpha="1.0"
-    android:startOffset="500"
-    android:duration="1500"
-    />
+        android:startOffset="500"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="500"
+        />
+    <scale
+        android:startOffset="500"
+        android:fromXScale="0.0"
+        android:toXScale="1.0"
+        android:fromYScale="0.0"
+        android:toYScale="1.0"
+        android:pivotX="300"
+        android:pivotY="800"
+        android:duration="500"
+        />
+
+    <translate
+        android:fromXDelta="0"
+        android:toXDelta="0"
+        android:fromYDelta="0"
+        android:toYDelta="0"
+        android:duration="3000"
+        />
 
 </set>

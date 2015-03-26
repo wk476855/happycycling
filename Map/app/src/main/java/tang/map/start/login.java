@@ -155,26 +155,26 @@ public class login extends Activity implements ILogin
     {
         @Override
         public void onClick(View v)
+    {
+        int id = v.getId();
+        switch (id)
         {
-            int id = v.getId();
-            switch (id)
-            {
-                case R.id.back:
-                    finish();
-                    break;
-                case R.id.finish:
-                    if (isLegal())
-                    {
-                        loginProgress = ProgressDialog.show(login.this,"Logining...","please wait...",true,false);
-                        user.setAccount(account.getText().toString());
-                        user.setPassword(passwd.getText().toString());
-                        Bundle loginData = new Bundle();
-                        loginData.putSerializable("user",user);
-                        MyHandler loginHandler = new MyHandler(login.this);
-                        LoginThread loginThread = new LoginThread(loginHandler,loginData);
-                        loginThread.start();
-                    }
-            }
+            case R.id.back:
+                finish();
+                break;
+            case R.id.finish:
+                if (isLegal())
+                {
+                    loginProgress = ProgressDialog.show(login.this,"Logining...","please wait...",true,false);
+                    user.setAccount(account.getText().toString());
+                    user.setPassword(passwd.getText().toString());
+                    Bundle loginData = new Bundle();
+                    loginData.putSerializable("user",user);
+                    MyHandler loginHandler = new MyHandler(login.this);
+                    LoginThread loginThread = new LoginThread(loginHandler,loginData);
+                    loginThread.start();
+                }
+        }
         }
     }
 

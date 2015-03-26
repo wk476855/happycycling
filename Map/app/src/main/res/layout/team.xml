@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/map_team_mask">
+    android:background="@drawable/map_guide_mask">
     <ImageButton
         android:id="@+id/createTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/map_team_create"/>
+        android:background="@drawable/map_team_createicon"/>
     <ImageButton
         android:id="@+id/joinTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/map_team_join"
+        android:background="@drawable/map_team_joinicon"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/createTeam"
         android:layout_marginTop="10dp"/>
@@ -22,8 +25,9 @@
         android:id="@+id/dipTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/map_team_display"
+        android:background="@drawable/map_team_displayicon"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/joinTeam"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 </RelativeLayout>
+<!--</ScrollView>-->

@@ -181,12 +181,10 @@ public class home extends Activity
                     finish();
                     break;
                 case R.id.start:
-                    start.setBackgroundResource(R.drawable.home_start_selected);
                     intent = new Intent(home.this,setout.class);
                     startActivity(intent);
                     break;
                 case R.id.map:
-                    map.setBackgroundResource(R.drawable.home_map_selected);
                     intent = new Intent(home.this, tang.map.cycle.map.class);
                     Bundle data = new Bundle();
                     data.putSerializable("user",user);
@@ -194,12 +192,10 @@ public class home extends Activity
                     startActivity(intent);
                     break;
                 case R.id.cycling:
-                    cycling.setBackgroundResource(R.drawable.home_cycling_selected);
                     intent = new Intent(home.this, cycle.class);
                     startActivity(intent);
                     break;
                 case R.id.person:
-                    person.setBackgroundResource(R.drawable.home_person_selected);
                     intent = new Intent(home.this,person.class);
                     startActivity(intent);
                     break;

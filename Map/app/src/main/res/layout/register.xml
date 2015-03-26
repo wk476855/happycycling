@@ -13,20 +13,20 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text=""
-            android:background="#00000000"
+            android:background="@drawable/backicon"
             android:id="@+id/back" />
         <Button
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:text=""
-            android:background="#00000000"
+            android:background="@drawable/finishicon"
             android:id="@+id/finish" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/up"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp">

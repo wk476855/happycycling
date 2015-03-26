@@ -15,6 +15,7 @@
         android:layout_alignParentLeft="true"
         android:background="@drawable/other"/>
     <FrameLayout
+        android:background="@drawable/chat_left"
         android:layout_toRightOf="@id/chatlist_image_other"
         android:layout_alignTop="@id/chatlist_image_other"
         android:layout_width="wrap_content"
@@ -23,9 +24,12 @@
             android:id="@+id/chatlist_text_other"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:text="other"
-            android:paddingTop="13dip"
-            android:paddingBottom="18dip"/>
+            android:textColor="#ff0a0000"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:textSize="20sp"/>
         <ImageView
             android:id="@+id/chatlist_voice_other"
             android:layout_width="wrap_content"

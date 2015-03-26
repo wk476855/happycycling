@@ -48,7 +48,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="RhczvWEWhM8F6eeG4q4SqeFL" />
+            android:value="xzLzMrPUqyhVPIRmThU5gmIT" />
 
         <activity
             android:name="tang.map.start.start"
@@ -103,7 +103,7 @@
         <activity
             android:name="tang.map.cycle.chat"
             android:label="@string/title_activity_chat"
-            android:windowSoftInputMode="adjustPan|stateVisible" >
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="tang.map.team.createTeam"

@@ -2,6 +2,7 @@ package tang.map.cycle;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.PaintDrawable;
@@ -11,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
@@ -22,6 +24,8 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
@@ -47,6 +51,10 @@ public class cycle_map extends Fragment {
     private LocationClient cycleLoc = null;
     private ArrayList<HashMap<String, Object>> photolist = null;
     private Context context = null;
+    private boolean isFirstLoc = true;// 是否首次定位
+
+
+
 
     public cycle_map() {
         // Required empty public constructor
@@ -76,8 +84,8 @@ public class cycle_map extends Fragment {
         baiduMap = cycleMap.getMap();
         baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         baiduMap.setMyLocationEnabled(true);
-        MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-        baiduMap.setMyLocationConfigeration(new MyLocationConfiguration(locationMode,true,null));
+   //     MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+  //      baiduMap.setMyLocationConfigeration(new MyLocationConfiguration(locationMode,true,null));
         cycleLoc = new LocationClient(context);
         cycleLoc.registerLocationListener(new MyLocationLister());
         LocationClientOption option = new LocationClientOption();
@@ -131,10 +139,17 @@ public class cycle_map extends Fragment {
     {
         @Override
         public void onReceiveLocation(BDLocation location) {
+
+            if(isFirstLoc) {
+                LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+                MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
+                baiduMap.animateMapStatus(u);
+                isFirstLoc=false;
+            }
             if(location == null || cycleMap == null)
                 return;
             MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
+                 //   .accuracy(location.getRadius())
                     .direction(0).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             baiduMap.setMyLocationData(locData);
@@ -142,6 +157,7 @@ public class cycle_map extends Fragment {
 
 
     }
+
 
     @Override
     public void onDestroy() {

@@ -118,6 +118,8 @@ public class map extends Activity implements IMap
     private SharedPreferences activitysp = null;
     private TeamMessageReceiver tmReseiver = null;
 
+    private boolean isFirstLoc = true;// 是否首次定位
+
 
     private AssetManager am = null;
     @Override
@@ -191,10 +193,10 @@ public class map extends Activity implements IMap
         MapStatusUpdate u = MapStatusUpdateFactory.zoomTo(maxZoomLevel);
         baiduMap.animateMapStatus(u);
 
-        baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+   //     baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         baiduMap.setMyLocationEnabled(true);
-        MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-        baiduMap.setMyLocationConfigeration(new MyLocationConfiguration(locationMode,true,null));
+    //   MyLocationConfiguration.LocationMode locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+    //    baiduMap.setMyLocationConfigeration(new MyLocationConfiguration(locationMode,true,null));
         baiduMap.setOnMapClickListener(new MyMapClickListener());
         baiduMap.setOnMarkerClickListener(new MarkClickListener());
 
@@ -799,10 +801,18 @@ public class map extends Activity implements IMap
                 return;
             System.err.println(location.getLongitude() + " " + location.getLatitude());
             MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
+              //      .accuracy(location.getRadius())
                     .direction(0).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             baiduMap.setMyLocationData(locData);
+
+            if(isFirstLoc) {
+                LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
+                MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
+                baiduMap.animateMapStatus(u);
+                isFirstLoc=false;
+            }
+
             user.setLongitude(location.getLongitude());
             user.setLatitude(location.getLatitude());
             SharedPreferences sp = getSharedPreferences("user",Context.MODE_PRIVATE);

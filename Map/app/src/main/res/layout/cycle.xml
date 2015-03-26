@@ -58,7 +58,7 @@
 
             <Button
                 android:id="@+id/add"
-                android:background="@drawable/cycle_add"
+                android:background="@drawable/cycle_addicon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"

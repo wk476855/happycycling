@@ -74,6 +74,7 @@ public class welcome extends Activity implements IWelcome {
     public void jump() {
         Intent intent = new Intent(welcome.this,start.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.zoomin,  R.anim.zoomout);
     }
 
     private class MyAnimationListener implements Animation.AnimationListener

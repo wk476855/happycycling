@@ -113,7 +113,7 @@ public class cycle extends FragmentActivity {
             {
                 if(!isMap)
                 {
-                    switchMap.setBackgroundResource(R.drawable.cycle_switch_list);
+                    switchMap.setBackgroundResource(R.drawable.cycle_switch_listicon);
                     if(cm == null) {
                         cm = new cycle_map();
                         cm.setPhotolist(photolist);
@@ -126,7 +126,7 @@ public class cycle extends FragmentActivity {
                 }
                 else
                 {
-                    switchMap.setBackgroundResource(R.drawable.cycle_switch);
+                    switchMap.setBackgroundResource(R.drawable.cycle_switchicon);
                     if(cl != null)
                     {
                         fragmentTransaction = fragmentManager.beginTransaction();

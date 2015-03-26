@@ -15,9 +15,9 @@
             android:background="@drawable/backicon"/>
         <Button
             android:id="@+id/switchToMap"
-            android:layout_width="57dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
-            android:background="@drawable/cycle_switch"
+            android:background="@drawable/cycle_switchicon"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />

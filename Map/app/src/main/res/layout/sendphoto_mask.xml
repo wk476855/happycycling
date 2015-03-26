@@ -7,18 +7,18 @@
         android:id="@+id/camera"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/sendphoto_camera"/>
+        android:background="@drawable/sendphoto_cameraicon"/>
     <ImageButton
         android:id="@+id/album"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/sendphoto_album"
+        android:background="@drawable/sendphoto_albumicon"
         android:layout_below="@+id/camera"
         android:layout_marginTop="3dp"/>
     <ImageButton
         android:id="@+id/cancel"
         android:layout_below="@+id/album"
-        android:background="@drawable/sendphoto_cancel"
+        android:background="@drawable/sendphoto_cancelicon"
         android:layout_marginTop="5dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />

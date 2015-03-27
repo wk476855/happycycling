@@ -122,6 +122,7 @@ public class cycle extends FragmentActivity {
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.cycle_fragment, cm);
                     fragmentTransaction.commit();
+                    add.setVisibility(View.INVISIBLE);
                     isMap = true;
                 }
                 else
@@ -133,6 +134,7 @@ public class cycle extends FragmentActivity {
                         fragmentTransaction.replace(R.id.cycle_fragment, cl);
                         fragmentTransaction.commit();
                         isMap = false;
+                        add.setVisibility(View.VISIBLE);
                     }
                 }
             }

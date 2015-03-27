@@ -203,7 +203,8 @@ public class CommunicationService extends Service {
                                     user.setUserid(json.getInt("userid"));
                                 if(json.has("nickname"))
                                     user.setNickname(json.getString("nickname"));
-
+                                if(json.has("head"))
+                                    user.setHead(DataToolkit.StringToBitmap(json.getString("head")));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

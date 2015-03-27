@@ -48,7 +48,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="xzLzMrPUqyhVPIRmThU5gmIT" />
+            android:value="RhczvWEWhM8F6eeG4q4SqeFL" />
 
         <activity
             android:name="tang.map.start.start"

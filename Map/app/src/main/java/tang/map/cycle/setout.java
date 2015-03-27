@@ -43,7 +43,8 @@ public class setout extends Activity {
     private int TIME = 1000;
     private int i = 0;
     boolean isFirstLoc = true;// 是否首次定位
-    boolean isfirstadd = true;// 是否第一次添加数据点
+    boolean isFirstadd=true;
+    int addtime = 0;// 是否第一次添加数据点
 
     private MapView mMapView = null;
     private TextView distanceShow;
@@ -58,7 +59,7 @@ public class setout extends Activity {
     private LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
     private DecimalFormat df = new DecimalFormat("0.00");
-    private SharedPreferences sp = null;
+    //  private SharedPreferences sp = null;
 
 
     private double current_latitude;
@@ -93,8 +94,8 @@ public class setout extends Activity {
         back = (Button)findViewById(R.id.back);
         back.setOnClickListener(new MyClickListener());
 
-        sp = getSharedPreferences("user", Context.MODE_PRIVATE);
-        totle_dis = sp.getFloat("totalDis",0);
+        //  sp = getSharedPreferences("user", Context.MODE_PRIVATE);
+        // totle_dis = sp.getFloat("totalDis",0);
 
         focusbutton.setOnTouchListener(new View.OnTouchListener()
         {
@@ -207,8 +208,8 @@ public class setout extends Activity {
             if (location == null || mMapView == null)
                 return;
             MyLocationData locData = new MyLocationData.Builder()
-                 //   .accuracy(location.getRadius())
-                            // 此处设置开发者获取到的方向信息，顺时针0-360
+                    //   .accuracy(location.getRadius())
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
             mBaiduMap.setMyLocationData(locData);
@@ -223,31 +224,41 @@ public class setout extends Activity {
 
                 LatLng old_point= new LatLng (old_latitude,old_longitude);
                 LatLng current_point= new LatLng(current_latitude, current_longitude);
-                 increase_dis = DistanceUtil.getDistance(old_point,current_point);
+                increase_dis = DistanceUtil.getDistance(old_point,current_point);
 
                 //判断是否产生数据颠簸
-                if(increase_dis < 50)
+
+                if(increase_dis < 40&&increase_dis!=0)
                 {
                     //判断是否是第一次添加数据
-                    if(isfirstadd)
-                    {
-                        points.add(old_point);
-                        isfirstadd = false;
+                    addtime++;
+                    if(addtime==2) {
+                        if(isFirstadd)
+                        {
+                            points.add(old_point);
+                            isFirstadd=false;
+                        }
+                        speed = increase_dis / 2.0;//计算即时速度
+                        speedShow.setText(df.format(speed) + "m/s");
+                        totle_dis += increase_dis;
+                        distanceShow.setText(df.format(totle_dis) + 'm');
+                        mMapView.getMap().clear();
+                        points.add(current_point);
+                        OverlayOptions ooPolyline = new PolylineOptions().width(10).color(0xAAFF0000).points(points);
+                        mBaiduMap.addOverlay(ooPolyline);
+                        addtime--;
                     }
 
-                    speed = increase_dis / 2.0;//计算即时速度
-                    speedShow.setText(df.format(speed) + "m/s");
-                    totle_dis += increase_dis;
-                    distanceShow.setText(df.format(totle_dis) + 'm');
-                    mMapView.getMap().clear();
-                    points.add(current_point);
-                    OverlayOptions ooPolyline = new PolylineOptions().width(10).color(0xAAFF0000).points(points);
-                    mBaiduMap.addOverlay(ooPolyline);
+
+                }
+                else
+                {
+                    addtime=0;
                 }
 
             }
 
-            if (isFirstLoc)
+            else
             {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),location.getLongitude());
@@ -300,9 +311,9 @@ public class setout extends Activity {
     {
         @Override
         public void onClick(View v) {
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putFloat("totalDis",totle_dis);
-            editor.commit();
+            //   SharedPreferences.Editor editor = sp.edit();
+            //  editor.putFloat("totalDis",totle_dis);
+            //    editor.commit();
             finish();
         }
     }
